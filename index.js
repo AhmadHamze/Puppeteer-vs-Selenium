@@ -19,7 +19,16 @@ const puppeteer = require("puppeteer-core");
   const spans = html.match(regex);
   const words = spans.map((span) => span.split(">")[1]);
 
-  console.log(words);
+  for (word of words) {
+    await page.keyboard.type(word);
+    await page.keyboard.type(" ");
+  }
+
+  const time = await page.$eval("#timer", (timer) =>
+    timer.textContent.slice(2, 4)
+  );
+  // time is a string however, we can use it as a number thanks to javascript implicit type conversion
+  console.log(`${(words.length * 60) / (60 - time)} WPM`);
 
   await browser.close();
 })().catch((err) => console.error(err));
