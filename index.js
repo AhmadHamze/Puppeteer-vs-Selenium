@@ -8,6 +8,18 @@ const puppeteer = require("puppeteer-core");
   });
   const page = await browser.newPage();
   await page.goto("https://10fastfingers.com/typing-test/english");
+  await page.waitForSelector("#row1");
+  await page
+    .mainFrame()
+    .waitForTimeout(10000)
+    .then(() => console.log("Waited 10 seconds!"));
 
-  //   await browser.close();
+  const html = await page.content();
+  const regex = /<span wordnr[^<]*/g;
+  const spans = html.match(regex);
+  const words = spans.map((span) => span.split(">")[1]);
+
+  console.log(words);
+
+  await browser.close();
 })().catch((err) => console.error(err));
