@@ -31,7 +31,5 @@ var t = process.hrtime();
   await browser.close();
   t = process.hrtime(t);
 })()
-  .catch((err) => console.error(err))
-  .then(() =>
-    console.log(`The program took ${t[0]} seconds and ${t[1]} noanoseconds`)
-  );
+  .then(() => console.log(`The program took ${t[0]}.${t[1]} seconds`))
+  .catch((err) => console.error(err));
