@@ -3,6 +3,7 @@ from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+# from selenium.webdriver.chrome.options import Options
 import re
 import time
 
@@ -10,6 +11,12 @@ start = time.perf_counter()
 
 PATH = "/home/ahmad/Templates/chrome-driver/chromedriver"
 serv = Service(PATH)
+'''
+    The three commented lines are needed if you want to run Selenium in a headless mode.
+'''
+# options = Options()
+# options.headless = True
+# webdriver.Chrome(service=serv, options=options)
 driver = webdriver.Chrome(service=serv)
 driver.get("https://10fastfingers.com/typing-test/english")
 try:
@@ -28,6 +35,7 @@ try:
     inputField = WebDriverWait(driver, 10).until(
         EC.presence_of_element_located((By.ID, "inputfield"))
     )
+
     for word in words:
         inputField.send_keys(word + " ")
     timer = driver.find_element(By.ID, "timer")

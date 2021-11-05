@@ -17,8 +17,6 @@ A browser will be launched, and the test will be done automatically by puppeteer
 
 The console will print the speed of typing in words per minute, and the total execution time of the program will also be printed.
 
-![Runtime](./puppeteer/images/puppeteerruntime2.png)
-
 ## Using the Selenium code
 
 First, navigate to the `selenium` directory.
@@ -47,7 +45,11 @@ You have to copy the path and CHANGE THE CODE at line eleven to
 
 > If you don't follow these instructions the code will not run!
 
-Finally, launch the application using `python main.py`
+Finally, launch the application using `python main.py`.
+
+Just like the Puppeteer program, the typing speed and the total runtime will be printed.
+
+If you want more explanation check this [blog](https://ahmadhamze.github.io/posts/automation/puppeteer-vs-selenium/).
 
 ## License
 
